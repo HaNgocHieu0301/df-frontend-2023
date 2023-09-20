@@ -8,7 +8,112 @@
   </head>
 
   <body>
-    Hello world
-    <script src="script.js"></script>
+    <header class="header-container">
+      <nav class="header__nav">
+        <div class="header-title">
+          <h1>Book<span class="text-red">store</span></h1>
+        </div>
+        <a
+          class="header-userinfo decoration-none"
+          href="https://github.com/HaNgocHieu0301"
+        >
+          <img class="header-userinfo__avatar" src="./avatar.png" alt="" />
+          <p class="header-userinfo__name text-black font-bold">HieuHN0301</p>
+        </a>
+      </nav>
+      <hr />
+    </header>
+    <main>
+      <section>
+        <div class="search-bar">
+          <input type="text" placeholder="Search Book" onkeyup="search()" />
+          <button class="btn btn-bg-blue" onclick="openAddModal()">
+            Add Book
+          </button>
+        </div>
+        <table class="table-book">
+          <thead>
+            <tr>
+              <th class="table-cell">ID</th>
+              <th class="table-cell">Name</th>
+              <th class="table-cell">Author</th>
+              <th class="table-cell">Topic</th>
+              <th class="table-cell">Action</th>
+            </tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </section>
+      <section id="modal-delete" class="modal" style="display: none">
+        <div class="modal-delete__panel">
+          <div class="modal-delete__header">
+            <span class="title">Delete book</span>
+            <span
+              class="close-icon"
+              onclick="closeModal(this.closest('.modal'))"
+              >×</span
+            >
+          </div>
+          <div class="modal-delete__content">
+            <p>
+              Do you want to delete <b id="delete-name">Refactoring</b> book?
+            </p>
+          </div>
+          <div class="modal-delete__action">
+            <button
+              class="btn btn-bg-gray"
+              id="cancel-delete-book"
+              onclick="closeModal(this.closest('.modal'))"
+            >
+              Cancel
+            </button>
+            <button class="btn btn-bg-red" id="btn-confirm-delete-book">
+              Yes
+            </button>
+          </div>
+        </div>
+      </section>
+      <section id="modal-add" class="modal" style="display: none">
+        <div class="modal-add__panel">
+          <div class="modal-delete__header">
+            <span class="title">Add book</span>
+            <span
+              class="close-icon"
+              onclick="closeModal(this.closest('.modal'))"
+              >×</span
+            >
+          </div>
+          <form class="form" action="" id="form-new-book">
+            <div class="form-group">
+              <label for="name">Name</label><br />
+              <input
+                type="text"
+                id="name"
+                placeholder="Book name"
+                required=""
+              />
+            </div>
+            <div class="form-group">
+              <label for="author">Author</label><br />
+              <input
+                type="text"
+                id="author"
+                placeholder="Author name"
+                required=""
+              />
+            </div>
+            <div class="form-group">
+              <label for="topic">Topic</label><br />
+              <select name="" id="topic"></select>
+            </div>
+            <div class="text-center">
+              <input class="btn btn-bg-red" type="submit" value="Create Book" />
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer></footer>
+    <script src="./script.js"></script>
   </body>
 </html>
