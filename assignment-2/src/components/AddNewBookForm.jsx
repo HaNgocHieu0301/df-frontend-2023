@@ -6,7 +6,10 @@ const AddNewBookForm = (props) => {
   const addNewBook = (e) => {
     e.preventDefault();
     state.viewBookList.sort((a, b) => a.id - b.id);
-    const lastId = state.bookList[state.bookList.length - 1].id;
+    let lastId = 1;
+    if (state.bookList.length > 0) {
+      lastId = state.bookList[state.bookList.length - 1].id;
+    }
     const newBook = {
       id: parseInt(lastId) + 1,
       name: "",
