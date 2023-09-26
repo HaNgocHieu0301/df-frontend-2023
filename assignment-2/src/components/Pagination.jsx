@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { StoreContext, actions } from "../store";
 const Pagination = () => {
   const [state, dispatch] = useContext(StoreContext);

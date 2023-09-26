@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import { StoreContext, actions } from "../store";
 import { Button, FormGroup } from "../components";
-import { topicList } from "../constants";
 const AddNewBookForm = (props) => {
   const [state, dispatch] = useContext(StoreContext);
   const addNewBook = (e) => {
@@ -19,7 +18,7 @@ const AddNewBookForm = (props) => {
     const topic = document.getElementById("topic");
     newBook.name = name.value;
     newBook.author = author.value;
-    newBook.topic = topicList[topic.value - 1].name;
+    newBook.topic = state.topicList[topic.value - 1].name;
     dispatch(actions.addNewBook(newBook));
     dispatch(actions.changeAddModalStatus("none"));
     name.value = "";
