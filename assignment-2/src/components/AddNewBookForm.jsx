@@ -35,7 +35,7 @@ const AddNewBookForm = (props) => {
       </FormGroup>
       <FormGroup id="topic" title="Topic">
         <select className="" id="topic">
-          {topicList.map((topic, index) => (
+          {state.topicList.map((topic, index) => (
             <option key={index} value={topic.id}>
               {topic.name}
             </option>
