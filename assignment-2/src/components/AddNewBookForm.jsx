@@ -6,7 +6,7 @@ const AddNewBookForm = (props) => {
   const addNewBook = (e) => {
     e.preventDefault();
     state.viewBookList.sort((a, b) => a.id - b.id);
-    let lastId = 1;
+    let lastId = 0;
     if (state.bookList.length > 0) {
       lastId = state.bookList[state.bookList.length - 1].id;
     }
