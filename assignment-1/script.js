@@ -43,7 +43,7 @@ window.onclick = (event) => {
   }
 };
 
-async function openDeleteModal(id, name) {
+function openDeleteModal(id, name) {
   const bookNameElement = document.querySelector(".modal-delete__content p b");
   bookNameElement.innerHTML = name;
   deleteModal.style.display = "block";
