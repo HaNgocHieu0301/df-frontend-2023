@@ -26,7 +26,7 @@ const initState = {
   pageSize: 4,
   topicList: topicList,
   bookList: JSON.parse(localStorage.getItem("books")) || books,
-  totalPage: Math.ceil(bookList.length / 4),
+  totalPage: Math.ceil(bookList.length / 5),
   viewBookList: [],
 };
 

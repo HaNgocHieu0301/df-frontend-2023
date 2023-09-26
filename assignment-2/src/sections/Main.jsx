@@ -46,9 +46,9 @@ const Main = () => {
   }, [state.searchInput, state.bookList, state.currentPage]);
 
   const pagingPage = (lst) => {
-    dispatch(actions.changeTotalPage(Math.ceil(lst.length / 4)));
-    const startIndex = (state.currentPage - 1) * 4;
-    const endInex = startIndex + 4;
+    dispatch(actions.changeTotalPage(Math.ceil(lst.length / 5)));
+    const startIndex = (state.currentPage - 1) * 5;
+    const endInex = startIndex + 5;
     const tmp = lst.slice(startIndex, endInex);
     dispatch(actions.changeViewBookList(tmp));
   };
