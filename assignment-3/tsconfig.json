@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "jsx": "preserve",
     "allowJs": true,
     "esModuleInterop": true,
@@ -26,12 +27,6 @@
     "moduleResolution": "node",
     "incremental": true
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.d.ts",
-    "**/*.js",
-    "**/*.jsx",
-  ],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.d.ts", "**/*.js", "**/*.jsx"],
   "exclude": ["node_modules"]
 }
