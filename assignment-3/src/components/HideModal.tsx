@@ -1,7 +1,7 @@
 const HideModal = (props) => {
   return (
     <section
-      className="modal"
+      className="modal text-black"
       id={props.id}
       style={{ display: props.displayStatus }}
     >
