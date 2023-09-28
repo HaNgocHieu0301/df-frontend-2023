@@ -1,6 +1,4 @@
 import HideModal from './HideModal'
-import Button from './Button'
-import RowInTable from './RowInTable'
 import BookTable from './BookTable'
 import AddNewBookForm from './AddNewBookForm'
 import FormGroup from './FormGroup'
@@ -10,8 +8,6 @@ import ChangeThemeToggle from './ChangeThemeToggle'
 
 export {
   HideModal,
-  Button,
-  RowInTable,
   BookTable,
   AddNewBookForm,
   FormGroup,

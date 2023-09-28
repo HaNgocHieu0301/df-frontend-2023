@@ -1,6 +1,5 @@
 import { useContext } from 'react'
 import { StoreContext, actions } from '../store'
-import Button from './Button'
 import FormGroup from './FormGroup'
 import { Book } from '../types'
 
@@ -64,11 +63,9 @@ const AddNewBookForm = () => {
         </select>
       </FormGroup>
       <div className="text-center">
-        <Button
-          title="Create Book"
-          className="btn-bg-red"
-          handler={(event) => addNewBook(event)}
-        />
+        <button className="btn-bg-red" onClick={(event) => addNewBook(event)}>
+          Create Book
+        </button>
       </div>
     </form>
   )

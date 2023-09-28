@@ -1,5 +1,4 @@
 import { useContext } from 'react'
-import RowInTable from './RowInTable'
 import { StoreContext, actions } from '../store'
 
 const BookTable = () => {
@@ -19,14 +18,23 @@ const BookTable = () => {
       </thead>
       <tbody id="table-body">
         {state.viewBookList.map((book) => (
-          <RowInTable
-            key={book.id}
-            book={book}
-            deleteHandler={() => {
-              dispatch(actions.changeDeleteModalStatus('block'))
-              dispatch(actions.selectedBook(book))
-            }}
-          />
+          <tr id={book.id.toString()}>
+            <td className={`${borderStyle} text-center`}>{book.id}</td>
+            <td className={borderStyle}>{book.name}</td>
+            <td className={borderStyle}>{book.author}</td>
+            <td className={borderStyle}>{book.topic}</td>
+            <td className={`${borderStyle} text-center`}>
+              <button
+                className="btn btn-bg-red btn-delete"
+                onClick={() => {
+                  dispatch(actions.changeDeleteModalStatus('block'))
+                  dispatch(actions.selectedBook(book))
+                }}
+              >
+                DELETE
+              </button>
+            </td>
+          </tr>
         ))}
       </tbody>
     </table>

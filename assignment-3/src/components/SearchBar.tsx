@@ -1,6 +1,5 @@
 import { useContext } from 'react'
 import { StoreContext, actions } from '../store'
-import Button from './Button'
 
 const SearchBar = () => {
   const { dispatch } = useContext(StoreContext)
@@ -13,11 +12,12 @@ const SearchBar = () => {
           dispatch(actions.search(e.currentTarget.value))
         }}
       />
-      <Button
-        className="btn-bg-blue"
-        title="Add Book"
-        handler={() => dispatch(actions.changeAddModalStatus('block'))}
-      />
+      <button
+        className="btn btn-bg-blue"
+        onClick={() => dispatch(actions.changeAddModalStatus('block'))}
+      >
+        Add Book
+      </button>
     </div>
   )
 }

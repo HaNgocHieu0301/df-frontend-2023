@@ -1,4 +1,8 @@
+import { useContext } from 'react'
+import { StoreContext, actions } from '../store'
+
 const HideModal = (props) => {
+  const { dispatch } = useContext(StoreContext)
   return (
     <section
       className="modal text-black"
@@ -10,7 +14,10 @@ const HideModal = (props) => {
           <span className="title">{props.titleModal}</span>
           <span
             className="close-icon"
-            onClick={props.closeHandler}
+            onClick={() => {
+              dispatch(actions.changeAddModalStatus('none'))
+              dispatch(actions.changeDeleteModalStatus('none'))
+            }}
             aria-hidden="true"
           >
             X
