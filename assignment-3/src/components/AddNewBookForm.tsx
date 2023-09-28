@@ -48,13 +48,13 @@ const AddNewBookForm = () => {
   }
   return (
     <form className="form" action="" id="form-new-book">
-      <FormGroup id="name" title="Book name">
+      <FormGroup title="Book name">
         <input type="text" id="name" placeholder="Book name" />
       </FormGroup>
-      <FormGroup id="author" title="Author">
+      <FormGroup title="Author">
         <input type="text" id="author" placeholder="Author name" />
       </FormGroup>
-      <FormGroup id="topic" title="Topic">
+      <FormGroup title="Topic">
         <select className="" id="topic">
           {state.topicList.map((topic, index) => (
             <option key={index} value={topic.id}>
