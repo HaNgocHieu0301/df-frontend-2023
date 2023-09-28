@@ -10,6 +10,7 @@ import {
   CHANGE_VIEW_BOOK_LIST,
   CHANGE_CURRENT_PAGE,
   CHANGE_TOTAL_PAGE,
+  CHANGE_THEME,
   bookList,
 } from '../constants'
 import { Book } from '../types'
@@ -26,6 +27,7 @@ export interface Action {
   lst?: Array<Book>
   page?: number
   totalPage?: number
+  theme?: string
 }
 const dataLocal = localStorage.getItem('books')
 
@@ -45,6 +47,7 @@ const initState: State = {
   bookList: dataLocal ? JSON.parse(dataLocal) : books,
   totalPage: Math.ceil(bookList.length / 5),
   viewBookList: [],
+  theme: 'light',
 }
 
 function reducer(state: State, action: Action) {
@@ -107,6 +110,12 @@ function reducer(state: State, action: Action) {
       return {
         ...state,
         totalPage: action.totalPage,
+      }
+    case CHANGE_THEME:
+      console.log(action.theme)
+      return {
+        ...state,
+        theme: action.theme,
       }
     default:
       throw new Error('Invalid action')

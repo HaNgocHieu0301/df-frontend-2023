@@ -1,13 +1,15 @@
+import { useContext } from 'react'
 import { Header, Main, Footer } from './sections'
-import { StoreProvider } from './store'
+import { StoreContext } from './store'
 
 function App() {
+  const { state } = useContext(StoreContext)
   return (
-    <StoreProvider>
+    <div className={`theme-${state.theme}`}>
       <Header />
       <Main />
       <Footer />
-    </StoreProvider>
+    </div>
   )
 }
 

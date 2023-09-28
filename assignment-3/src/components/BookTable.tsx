@@ -4,15 +4,17 @@ import { StoreContext, actions } from '../store'
 
 const BookTable = () => {
   const { state, dispatch } = useContext(StoreContext)
+  const borderStyle: string =
+    state.theme === 'dark' ? 'border-white' : 'border-black'
   return (
-    <table className="table-book">
+    <table className={`table_book ${borderStyle}`}>
       <thead>
         <tr>
-          <th className="table-cell">ID</th>
-          <th className="table-cell">Name</th>
-          <th className="table-cell">Author</th>
-          <th className="table-cell">Topic</th>
-          <th className="table-cell">Action</th>
+          <th className={borderStyle}>ID</th>
+          <th className={borderStyle}>Name</th>
+          <th className={borderStyle}>Author</th>
+          <th className={borderStyle}>Topic</th>
+          <th className={borderStyle}>Action</th>
         </tr>
       </thead>
       <tbody id="table-body">

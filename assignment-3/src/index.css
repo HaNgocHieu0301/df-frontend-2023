@@ -3,8 +3,25 @@ html {
   width: 100%;
 }
 body {
-  margin: 0 2rem;
+  margin: 0;
   font-family: 'Roboto', sans-serif;
+}
+.theme-light {
+  margin: 0 2rem;
+  background-color: #fff;
+  color: #000;
+}
+.theme-dark {
+  margin: 0 2rem;
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.flex_row {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
 }
 .mt-1 {
   margin-top: 1rem;
@@ -62,6 +79,12 @@ body {
 .btn-bg-yellow {
   background-color: #6acf26;
 }
+.border-black {
+  border: 1px solid black;
+}
+.border-white {
+  border: 1px solid white;
+}
 /* header */
 .header-container {
   width: 100%;
@@ -70,6 +93,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0 2rem;
 }
 .header-title h1 {
   font-size: 2.5em;
@@ -80,8 +104,8 @@ body {
   align-items: center;
 }
 .header-userinfo__avatar {
-  max-width: 3rem;
-  max-height: 3rem;
+  width: 3rem;
+  height: 3rem;
   padding: 0px 12px;
   border-radius: 50%;
 }
@@ -102,19 +126,23 @@ body {
 /* .search-bar input::placeholder {
   text-align: center;
 } */
-.table-book {
+tr {
+  height: 3.5em;
+}
+th {
+  padding: 1rem;
+}
+td {
+  padding: 0 10px;
+}
+.table_book {
   width: 100%;
-  border: 1px solid black;
   border-collapse: collapse;
 }
 .table-book thead {
   font-weight: bold;
   text-align: center;
   padding: 1em;
-}
-.table-cell {
-  padding: 1rem;
-  border: 1px solid black;
 }
 .table-book tbody {
   display: table-row-group;
@@ -247,4 +275,36 @@ footer {
 .copyright a {
   font-weight: 400;
   margin-left: 0.5em;
+}
+
+/* toggle change theme */
+.toggle-switch {
+  width: 45px;
+  height: 25px;
+  border: none;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0 3px;
+}
+
+.slider {
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.toggle-switch.dark {
+  background-color: #d3455b;
+}
+
+.toggle-switch.light {
+  background-color: #ccc; /* Gray background when the switch is off */
+}
+
+.toggle-switch.dark .slider {
+  transform: translateX(19px); /* Move the slider to the right when on */
 }

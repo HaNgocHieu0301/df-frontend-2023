@@ -1,4 +1,9 @@
+import { useContext } from 'react'
+import { ChangeThemeToggle } from '../components'
+import { StoreContext } from '../store'
+
 const Header = () => {
+  const { state } = useContext(StoreContext)
   const reloadPage = () => {
     window.location.reload()
   }
@@ -12,7 +17,9 @@ const Header = () => {
           onClick={reloadPage}
         >
           <h1
-            className="header-title decoration-none text-black"
+            className={`header-title decoration-none ${
+              state.theme === 'light' ? 'text-black' : 'text-white'
+            }`}
             onClick={reloadPage}
             aria-hidden="true"
           >
@@ -20,15 +27,26 @@ const Header = () => {
             <span className="text-red">store</span>
           </h1>
         </a>
-        <a
-          className="header-userinfo decoration-none"
-          href="https://github.com/HaNgocHieu0301"
-        >
-          <img className="header-userinfo__avatar" src="../avatar.png" alt="" />
-          <p className="header-userinfo__name text-black font-bold">
-            HieuHN0301
-          </p>
-        </a>
+        <div className="flex_row">
+          <ChangeThemeToggle />
+          <a
+            className="header-userinfo decoration-none"
+            href="https://github.com/HaNgocHieu0301"
+          >
+            <img
+              className="header-userinfo__avatar"
+              src="https://avatars.githubusercontent.com/u/55908408?v=4"
+              alt=""
+            />
+            <p
+              className={`header-userinfo__name ${
+                state.theme === 'light' ? 'text-black' : 'text-white'
+              } font-bold`}
+            >
+              HieuHN0301
+            </p>
+          </a>
+        </div>
       </nav>
       <hr />
     </header>

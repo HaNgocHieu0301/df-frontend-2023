@@ -15,7 +15,7 @@
     "ecmaFeatures": {
       "jsx": true
     },
-    "project": ["./tsconfig.json", "./assignment-3/tsconfig.json"],
+    "project": ["./tsconfig.json"],
     "createDefaultProgram": true,
     "sourceType": "module"
   },

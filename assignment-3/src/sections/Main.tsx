@@ -52,7 +52,7 @@ const Main = () => {
   }, [state.searchInput, state.bookList, state.currentPage, dispatch])
 
   return (
-    <main>
+    <main className={`theme-${state.theme}`}>
       <SearchBar />
       <BookTable />
       {/* Delete Modal */}
