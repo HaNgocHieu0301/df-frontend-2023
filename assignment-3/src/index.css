@@ -7,11 +7,13 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 .theme-light {
+  height: 100vh;
   margin: 0 2rem;
   background-color: #fff;
   color: #000;
 }
 .theme-dark {
+  height: 100vh;
   margin: 0 2rem;
   background-color: #1a1a1a;
   color: #fff;

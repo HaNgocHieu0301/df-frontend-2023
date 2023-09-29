@@ -1,60 +1,48 @@
-import { useContext } from 'react'
+import { useContext, useRef } from 'react'
 import { StoreContext, actions } from '../store'
 import FormGroup from './FormGroup'
-import { Book } from '../types'
 
 const AddNewBookForm = () => {
   const { state, dispatch } = useContext(StoreContext)
+  const nameRef = useRef<HTMLInputElement>(null)
+  const authorRef = useRef<HTMLInputElement>(null)
+  const topicRef = useRef<HTMLSelectElement>(null)
+
   const addNewBook = (e) => {
     e.preventDefault()
     state.viewBookList.sort((a, b) => a.id - b.id)
-    let lastId: number = 0
-    if (state.bookList.length > 0) {
-      lastId = state.bookList[state.bookList.length - 1].id
-    }
-    let newBook: Book = {
-      id: parseInt(lastId.toString(), 10) + 1,
-      name: '',
-      author: '',
-      topic: '',
-    }
-    const nameInput: HTMLInputElement | null = document.getElementById(
-      'name',
-    ) as HTMLInputElement | null
-    const authorInput: HTMLInputElement | null = document.getElementById(
-      'author',
-    ) as HTMLInputElement | null
-    const topicSelect: HTMLSelectElement | null = document.getElementById(
-      'topic',
-    ) as HTMLSelectElement | null
-
-    if (nameInput && authorInput && topicSelect) {
-      newBook = {
+    if (nameRef.current && authorRef.current && topicRef.current) {
+      const lastId: number =
+        state.bookList.length > 0
+          ? state.bookList[state.bookList.length - 1].id
+          : 0
+      const newBook = {
         id: parseInt(lastId.toString(), 10) + 1,
-        name: nameInput.value,
-        author: authorInput.value,
-        topic: state.topicList[parseInt(topicSelect.value, 10) - 1]?.name || '',
+        name: nameRef.current.value,
+        author: authorRef.current.value,
+        topic:
+          state.topicList[parseInt(topicRef.current.value, 10) - 1]?.name || '',
       }
 
       dispatch(actions.addNewBook(newBook))
       dispatch(actions.changeAddModalStatus('none'))
 
       // Clear input values
-      nameInput.value = ''
-      authorInput.value = ''
-      topicSelect.value = '1'
+      nameRef.current.value = ''
+      authorRef.current.value = ''
+      topicRef.current.value = '1'
     }
   }
   return (
     <form className="form" action="" id="form-new-book">
       <FormGroup title="Book name">
-        <input type="text" id="name" placeholder="Book name" />
+        <input type="text" ref={nameRef} placeholder="Book name" />
       </FormGroup>
       <FormGroup title="Author">
-        <input type="text" id="author" placeholder="Author name" />
+        <input type="text" ref={authorRef} placeholder="Author name" />
       </FormGroup>
       <FormGroup title="Topic">
-        <select className="" id="topic">
+        <select className="" ref={topicRef}>
           {state.topicList.map((topic, index) => (
             <option key={index} value={topic.id}>
               {topic.name}
@@ -63,7 +51,10 @@ const AddNewBookForm = () => {
         </select>
       </FormGroup>
       <div className="text-center">
-        <button className="btn-bg-red" onClick={(event) => addNewBook(event)}>
+        <button
+          className="btn btn-bg-red"
+          onClick={(event) => addNewBook(event)}
+        >
           Create Book
         </button>
       </div>
