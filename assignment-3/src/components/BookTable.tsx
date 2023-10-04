@@ -18,7 +18,7 @@ const BookTable = () => {
       </thead>
       <tbody id="table-body">
         {state.viewBookList.map((book) => (
-          <tr id={book.id.toString()}>
+          <tr key={book.id} id={book.id.toString()}>
             <td className={`${borderStyle} text-center`}>{book.id}</td>
             <td className={borderStyle}>{book.name}</td>
             <td className={borderStyle}>{book.author}</td>

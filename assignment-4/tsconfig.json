@@ -38,7 +38,8 @@
     "**/*.tsx",
     "**/*.d.ts",
     "**/*.js",
-    "**/*.jsx"
+    "**/*.jsx",
+    "src/sections/index.ts"
   ],
   "exclude": ["node_modules"]
 }
