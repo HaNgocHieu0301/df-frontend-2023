@@ -36,7 +36,6 @@ const Pagination = () => {
       index === state.currentPage
         ? 'btn bg-red-600 my-2'
         : 'btn bg-blue-600 my-2'
-    console.log(index)
     pagingElement.push(
       <button
         key={index}

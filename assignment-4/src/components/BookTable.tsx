@@ -1,9 +1,8 @@
 'use client'
 
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import Link from 'next/link'
 import { StoreContext, actions } from '../store'
-import { bookList as dm } from '../utils/constant'
 
 const BookTable = () => {
   const { state, dispatch } = useContext(StoreContext)
