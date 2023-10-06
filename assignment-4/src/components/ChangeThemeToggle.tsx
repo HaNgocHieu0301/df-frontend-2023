@@ -1,8 +1,15 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { StoreContext, actions } from '../store'
 
 const ChangeThemeToggle = () => {
   const { state, dispatch } = useContext(StoreContext)
+  useEffect(() => {
+    if (state.theme === 'dark') {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [state.theme])
   return (
     <div className="flex flex-row gap-4 items-center dark-mode-toggle">
       <button

@@ -67,7 +67,7 @@ const initState: State = {
   bookList: initBooks,
   totalPage: 1,
   viewBookList: [],
-  theme: 'light',
+  theme: 'dark',
 }
 
 function reducer(state: State, action: Action) {

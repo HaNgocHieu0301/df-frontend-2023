@@ -15,9 +15,6 @@ export default function BookDetail() {
   const book: Book | undefined = state.bookList.find(
     (book) => book.id === parseInt(params['bookid'] as string, 10),
   )
-  const themeText: string =
-    state.theme === 'light' ? 'text-black' : 'text-white'
-
   const deleteBook = () => {
     dispatch(actions.selectedBook({ id: -1, name: '', author: '', topic: '' }))
     dispatch(actions.changeDeleteModalStatus('none'))
@@ -26,7 +23,7 @@ export default function BookDetail() {
   }
   return (
     <Layout>
-      <div className={`m-4 ${themeText}`}>
+      <div className="m-4 dark:text-white">
         <Link className="text-red-700" href="/">
           &lt; Back
         </Link>

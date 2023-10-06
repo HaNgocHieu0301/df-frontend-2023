@@ -1,19 +1,14 @@
 'use client'
 
-import { useContext } from 'react'
 import Image from 'next/image'
 import { ChangeThemeToggle } from '../components'
-import { StoreContext } from '../store'
 
 const Header = () => {
-  const { state } = useContext(StoreContext)
   return (
     <header className="w-full px-[20px]">
       <nav className="flex items-center justify-between">
         <h1
-          className={`my-3 decoration-none font-bold text-3xl cursor-pointer ${
-            state.theme === 'light' ? 'text-black' : 'text-white'
-          }`}
+          className="my-3 decoration-none font-bold text-3xl cursor-pointer dark:text-white"
           onClick={() => window.location.reload()}
           aria-hidden="true"
         >
@@ -32,13 +27,7 @@ const Header = () => {
               width={32}
               height={32}
             />
-            <p
-              className={`font-bold ${
-                state.theme === 'light' ? 'text-red-900' : 'text-white'
-              }`}
-            >
-              HieuHN0301
-            </p>
+            <p className="font-bold text-red-900 dark:text-white">HieuHN0301</p>
           </a>
         </div>
       </nav>

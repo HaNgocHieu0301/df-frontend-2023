@@ -6,32 +6,44 @@ import { StoreContext, actions } from '../store'
 
 const BookTable = () => {
   const { state, dispatch } = useContext(StoreContext)
-  const borderStyle: string =
-    state.theme === 'dark'
-      ? 'border-white text-white'
-      : 'border-black text-black'
   return (
     <div className="m-4">
-      <table
-        className={`w-full border-2 border-black border-collapse ${borderStyle}`}
-      >
+      <table className="w-full border-2 border-black border-collapse dark:border-white dark: text-white">
         <thead>
           <tr>
-            <th className={`border border-black ${borderStyle}`}>ID</th>
-            <th className={`border border-black ${borderStyle}`}>Name</th>
-            <th className={`border border-black ${borderStyle}`}>Author</th>
-            <th className={`border border-black ${borderStyle}`}>Topic</th>
-            <th className={`border border-black ${borderStyle}`}>Action</th>
+            <th className="border border-black text-black dark:border-white dark:text-white">
+              ID
+            </th>
+            <th className="border border-black text-black dark:border-white dark:text-white">
+              Name
+            </th>
+            <th className="border border-black text-black dark:border-white dark:text-white">
+              Author
+            </th>
+            <th className="border border-black text-black dark:border-white dark:text-white">
+              Topic
+            </th>
+            <th className="border border-black text-black dark:border-white dark:text-white">
+              Action
+            </th>
           </tr>
         </thead>
         <tbody id="table-body">
           {state.viewBookList.map((book) => (
             <tr key={book.id} id={book.id.toString()}>
-              <td className={`border ${borderStyle} text-center`}>{book.id}</td>
-              <td className={`border ${borderStyle}`}>{book.name}</td>
-              <td className={`border ${borderStyle}`}>{book.author}</td>
-              <td className={`border ${borderStyle}`}>{book.topic}</td>
-              <td className={`border ${borderStyle} text-center`}>
+              <td className="border border-black text-black dark:border-white dark:text-white text-center">
+                {book.id}
+              </td>
+              <td className="border border-black text-black dark:border-white dark:text-white ">
+                {book.name}
+              </td>
+              <td className="border border-black text-black dark:border-white dark:text-white ">
+                {book.author}
+              </td>
+              <td className="border border-black text-black dark:border-white dark:text-white ">
+                {book.topic}
+              </td>
+              <td className="border border-black text-black dark:border-white dark:text-white text-center">
                 <button
                   className="btn bg-red-500 text-white font-bold ml-1"
                   onClick={() => {
