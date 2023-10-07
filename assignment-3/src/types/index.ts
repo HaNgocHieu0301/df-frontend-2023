@@ -1,2 +1,2 @@
-export * from './book.type'
-export * from './topic.type'
+export * from './book.type';
+export * from './topic.type';

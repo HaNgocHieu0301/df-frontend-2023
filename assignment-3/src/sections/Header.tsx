@@ -1,12 +1,12 @@
-import { useContext } from 'react'
-import { ChangeThemeToggle } from '../components'
-import { StoreContext } from '../store'
+import { useContext } from 'react';
+import { ChangeThemeToggle } from '../components';
+import { StoreContext } from '../store';
 
 const Header = () => {
-  const { state } = useContext(StoreContext)
+  const { state } = useContext(StoreContext);
   const reloadPage = () => {
-    window.location.reload()
-  }
+    window.location.reload();
+  };
 
   return (
     <header className="header-container">
@@ -50,7 +50,7 @@ const Header = () => {
       </nav>
       <hr />
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

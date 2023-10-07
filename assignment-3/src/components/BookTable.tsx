@@ -1,10 +1,10 @@
-import { useContext } from 'react'
-import { StoreContext, actions } from '../store'
+import { useContext } from 'react';
+import { StoreContext, actions } from '../store';
 
 const BookTable = () => {
-  const { state, dispatch } = useContext(StoreContext)
+  const { state, dispatch } = useContext(StoreContext);
   const borderStyle: string =
-    state.theme === 'dark' ? 'border-white' : 'border-black'
+    state.theme === 'dark' ? 'border-white' : 'border-black';
   return (
     <table className={`table_book ${borderStyle}`}>
       <thead>
@@ -27,8 +27,8 @@ const BookTable = () => {
               <button
                 className="btn btn-bg-red btn-delete"
                 onClick={() => {
-                  dispatch(actions.changeDeleteModalStatus('block'))
-                  dispatch(actions.selectedBook(book))
+                  dispatch(actions.changeDeleteModalStatus('block'));
+                  dispatch(actions.selectedBook(book));
                 }}
               >
                 DELETE
@@ -38,7 +38,7 @@ const BookTable = () => {
         ))}
       </tbody>
     </table>
-  )
-}
+  );
+};
 
-export default BookTable
+export default BookTable;
