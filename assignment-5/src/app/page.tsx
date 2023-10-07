@@ -1,10 +1,10 @@
-'use client'
+'use client';
 
-import { useEffect } from 'react'
-import { useForm } from 'react-hook-form'
-import { useRouter } from 'next/navigation'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 const LoginSchema = z.object({
   email: z.string().email(),
@@ -12,26 +12,26 @@ const LoginSchema = z.object({
     .string()
     .min(8)
     .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/gm),
-})
-type LoginSchemaType = z.infer<typeof LoginSchema>
+});
+type LoginSchemaType = z.infer<typeof LoginSchema>;
 
 function App() {
-  const Router = useRouter()
+  const Router = useRouter();
   const {
     formState: { errors },
     register,
     handleSubmit,
   } = useForm<LoginSchemaType>({
     resolver: zodResolver(LoginSchema),
-  })
+  });
 
   const onSubmit = handleSubmit(async (formValues) => {
-    Router.push('/books')
-  })
+    Router.push('/books');
+  });
 
   useEffect(() => {
-    console.log(errors)
-  }, [errors])
+    console.log(errors);
+  }, [errors]);
 
   return (
     <div className="fixed left-0 top-0 pt-[100px] w-full h-full overflow-auto bg-black/25">
@@ -46,9 +46,7 @@ function App() {
             placeholder="Email"
             {...register('email')}
           ></input>
-          {errors.email && (
-            <span className="text-red-500">{errors.email?.message}</span>
-          )}
+          {errors.email && <span className="text-red-500">{errors.email?.message}</span>}
         </div>
         <div className="mx-6">
           <label htmlFor="password"></label>
@@ -59,9 +57,7 @@ function App() {
             placeholder="Password"
             {...register('password')}
           ></input>
-          {errors.password && (
-            <span className="text-red-500">{errors.password?.message}</span>
-          )}
+          {errors.password && <span className="text-red-500">{errors.password?.message}</span>}
         </div>
         <div className="mb-5 text-center">
           <button className="btn bg-red-700" onClick={onSubmit}>
@@ -70,7 +66,7 @@ function App() {
         </div>
       </form>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

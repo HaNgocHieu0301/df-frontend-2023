@@ -1,8 +1,8 @@
-import { useContext } from 'react'
-import { StoreContext, actions } from '../store'
+import { useContext } from 'react';
+import { StoreContext, actions } from '../store';
 
 const SearchBar = () => {
-  const { dispatch } = useContext(StoreContext)
+  const { dispatch } = useContext(StoreContext);
   return (
     <div className="flex justify-end gap-6 m-5 search-bar">
       <input
@@ -10,7 +10,7 @@ const SearchBar = () => {
         type="text"
         placeholder="Search Book"
         onKeyUp={(e) => {
-          dispatch(actions.search(e.currentTarget.value))
+          dispatch(actions.search(e.currentTarget.value));
         }}
       />
       <button
@@ -20,7 +20,7 @@ const SearchBar = () => {
         Add Book
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;

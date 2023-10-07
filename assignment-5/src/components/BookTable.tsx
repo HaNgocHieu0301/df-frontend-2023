@@ -1,19 +1,17 @@
-'use client'
+'use client';
 
-import { useContext } from 'react'
-import Link from 'next/link'
-import { StoreContext, actions } from '../store'
+import { useContext } from 'react';
+import Link from 'next/link';
+import { StoreContext, actions } from '../store';
 
 const BookTable = () => {
-  const { state, dispatch } = useContext(StoreContext)
+  const { state, dispatch } = useContext(StoreContext);
   return (
     <div className="m-4">
       <table className="w-full border-2 border-black border-collapse dark:border-white dark: text-white">
         <thead>
           <tr>
-            <th className="border border-black text-black dark:border-white dark:text-white">
-              ID
-            </th>
+            <th className="border border-black text-black dark:border-white dark:text-white">ID</th>
             <th className="border border-black text-black dark:border-white dark:text-white">
               Name
             </th>
@@ -47,8 +45,8 @@ const BookTable = () => {
                 <button
                   className="btn bg-red-500 text-white font-bold ml-1"
                   onClick={() => {
-                    dispatch(actions.changeDeleteModalStatus('block'))
-                    dispatch(actions.selectedBook(book))
+                    dispatch(actions.changeDeleteModalStatus('block'));
+                    dispatch(actions.selectedBook(book));
                   }}
                 >
                   DELETE
@@ -62,8 +60,8 @@ const BookTable = () => {
                 <button
                   className="btn bg-red-500 text-white font-bold ml-1"
                   onClick={() => {
-                    dispatch(actions.changeUpdateModalStatus('block'))
-                    dispatch(actions.selectedBook(book))
+                    dispatch(actions.changeUpdateModalStatus('block'));
+                    dispatch(actions.selectedBook(book));
                   }}
                 >
                   EDIT
@@ -74,7 +72,7 @@ const BookTable = () => {
         </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
-export default BookTable
+export default BookTable;
