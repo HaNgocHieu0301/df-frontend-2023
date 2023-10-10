@@ -1,5 +1,5 @@
 {
-  "name": "assignment-4",
+  "name": "assignment-5",
   "version": "0.1.0",
   "private": true,
   "description": "DF 2023 Assignment 4",
@@ -14,39 +14,30 @@
     "start": "next start",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "cd .. && husky install assignment-5/.husky"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.1",
     "cssnano": "^6.0.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
     "next": "^13.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.47.0",
-    "zod": "^3.22.2"
+    "zod": "^3.22.4",
+    "zustand": "^4.4.3"
   },
   "devDependencies": {
     "@dwarvesf/react-eslint-config": "^1.0.1",
     "@next/eslint-plugin-next": "^13.5.3",
     "@types/node": "^20.7.0",
-    "@types/react": "^18.2.22",
+    "@types/react": "^18.2.23",
     "@types/react-dom": "^18.2.7",
-    "@typescript-eslint/eslint-plugin": "4.x",
-    "@typescript-eslint/parser": "4.0.1",
     "autoprefixer": "^10.4.16",
-    "babel-eslint": "10.x",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb": "18.x",
-    "eslint-config-airbnb-typescript": "12.x",
+    "eslint": "^8.50.0",
     "eslint-config-next": "^13.5.3",
-    "eslint-config-prettier": "7.x",
-    "eslint-config-react": "1.x",
-    "eslint-plugin-import": "2.x",
-    "eslint-plugin-jsx-a11y": "6.x",
-    "eslint-plugin-prettier": "3.x",
-    "eslint-plugin-react": "7.x",
-    "eslint-plugin-react-hooks": "4.x",
-    "eslint-plugin-testing-library": "3.x",
     "postcss": "^8.4.30",
     "prettier": "^3.0.3",
     "tailwindcss": "^3.3.3",
@@ -54,5 +45,11 @@
   },
   "engines": {
     "node": ">=14.0.0"
+  },
+  "lint-staged": {
+    "*.tsx": [
+      "pnpm run lint",
+      "git add ."
+    ]
   }
 }

@@ -27,7 +27,9 @@ const Main = () => {
   };
 
   useEffect(() => {
-    const pagingPage = async (lst: Book[]) => {
+    const pagingPage = async (lst1: Book[]) => {
+      const lst = lst1.slice().reverse();
+      // lst.reverse();
       let curPage: number = state.currentPage;
       const totalPage: number = Math.ceil(lst.length / 5);
       dispatch(actions.changeTotalPage(totalPage));
@@ -49,7 +51,7 @@ const Main = () => {
     } else {
       pagingPage(state.bookList);
     }
-  }, [state.searchInput, state.currentPage, state.bookList, dispatch]);
+  }, [state.searchInput, state.currentPage, state.bookList, state.updateModalStatus, dispatch]);
 
   return (
     <main>
@@ -60,7 +62,7 @@ const Main = () => {
         <div className=" py-[6px] px-[55px] text-center modal-delete__content">
           <p>
             Do you want to delete
-            <b id="delete-name"> {state.selectedBook.name}</b> book?
+            <b id="delete-name"> {state.selectedBook?.name}</b> book?
           </p>
         </div>
         <div className="flex justify-center gap-4 m-6">

@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import {
   topicList,
@@ -14,43 +14,44 @@ import {
   CHANGE_TOTAL_PAGE,
   CHANGE_THEME,
   CHANGE_BOOK_LIST,
+  UPDATE_BOOK,
   bookList,
-} from '../utils/constant'
-import { Book } from '../types/book.type'
-import { Topic } from '../types/topic.type'
+} from '../utils/constant';
+import { Book } from '../types/book.type';
+import { Topic } from '../types/topic.type';
 
 export interface State {
-  addModalStatus: string
-  deleteModalStatus: string
-  updateModalStatus: string
-  searchInput: string
-  selectedBook: Book
-  currentPage: number
-  pageSize: number
-  topicList: Array<Topic>
-  bookList: Array<Book>
-  totalPage: number
-  viewBookList: Array<Book>
-  theme: string
+  addModalStatus: string;
+  deleteModalStatus: string;
+  updateModalStatus: string;
+  searchInput: string;
+  selectedBook: Book;
+  currentPage: number;
+  pageSize: number;
+  topicList: Array<Topic>;
+  bookList: Array<Book>;
+  totalPage: number;
+  viewBookList: Array<Book>;
+  theme: string;
 }
 export interface Action {
-  type: string
-  status?: string
-  book?: Book
-  keyword?: string
-  id?: number
-  lst?: Array<Book>
-  page?: number
-  totalPage?: number
-  theme?: string
+  type: string;
+  status?: string;
+  book?: Book;
+  keyword?: string;
+  id?: number;
+  lst?: Array<Book>;
+  page?: number;
+  totalPage?: number;
+  theme?: string;
 }
-let initBooks: Array<Book> = []
+let initBooks: Array<Book> = [];
 if (typeof window !== 'undefined') {
-  const tmp = localStorage.getItem('books')
+  const tmp = localStorage.getItem('books');
   if (tmp) {
-    initBooks = JSON.parse(tmp)
+    initBooks = JSON.parse(tmp);
   } else {
-    initBooks = bookList
+    initBooks = bookList;
   }
 }
 const initState: State = {
@@ -60,9 +61,9 @@ const initState: State = {
   searchInput: '',
   selectedBook: {
     id: -1,
-    name: 'xxx',
-    author: 'xxx',
-    topic: 'xxx',
+    name: '',
+    author: '',
+    topic: '',
   },
   currentPage: 1,
   pageSize: 5,
@@ -71,7 +72,7 @@ const initState: State = {
   totalPage: 1,
   viewBookList: [],
   theme: 'light',
-}
+};
 
 function reducer(state: State, action: Action) {
   switch (action.type) {
@@ -79,17 +80,17 @@ function reducer(state: State, action: Action) {
       return {
         ...state,
         addModalStatus: action.status,
-      }
+      };
     case CHANGE_DELETE_MODAL_STATUS:
       return {
         ...state,
         deleteModalStatus: action.status,
-      }
+      };
     case CHANGE_UPDATE_MODAL_STATUS:
       return {
         ...state,
-        deleteModalStatus: action.status,
-      }
+        updateModalStatus: action.status,
+      };
     case SELECTED_BOOK:
       if (action.book) {
         return {
@@ -100,62 +101,70 @@ function reducer(state: State, action: Action) {
             author: action.book.author,
             topic: action.book.topic,
           },
-        }
+        };
       }
-      return state
+      return state;
     case SEARCH:
       return {
         ...state,
         searchInput: action.keyword,
-      }
+      };
     case ADD_NEW_BOOK: {
-      const tmp1 = [...state.bookList, action.book]
+      const tmp1 = [...state.bookList, action.book];
       if (typeof window !== 'undefined') {
-        localStorage.setItem('books', JSON.stringify(tmp1))
+        localStorage.setItem('books', JSON.stringify(tmp1));
       }
       return {
         ...state,
         bookList: tmp1,
+      };
+    }
+    case UPDATE_BOOK: {
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('books', JSON.stringify(state.bookList));
       }
+      return {
+        ...state,
+      };
     }
     case DELETE_BOOK: {
-      const tmp2 = state.bookList.filter((book) => book.id !== action.id)
+      const tmp2 = state.bookList.filter((book) => book.id !== action.id);
       if (typeof window !== 'undefined') {
-        localStorage.setItem('books', JSON.stringify(tmp2))
+        localStorage.setItem('books', JSON.stringify(tmp2));
       }
       return {
         ...state,
         bookList: tmp2,
-      }
+      };
     }
     case CHANGE_VIEW_BOOK_LIST:
       return {
         ...state,
         viewBookList: action.lst,
-      }
+      };
     case CHANGE_BOOK_LIST:
       return {
         ...state,
         bookList: action.lst,
-      }
+      };
     case CHANGE_CURRENT_PAGE:
       return {
         ...state,
         currentPage: action.page,
-      }
+      };
     case CHANGE_TOTAL_PAGE:
       return {
         ...state,
         totalPage: action.totalPage,
-      }
+      };
     case CHANGE_THEME:
       return {
         ...state,
         theme: action.theme,
-      }
+      };
     default:
-      throw new Error('Invalid action')
+      throw new Error('Invalid action');
   }
 }
-export { initState }
-export default reducer
+export { initState };
+export default reducer;

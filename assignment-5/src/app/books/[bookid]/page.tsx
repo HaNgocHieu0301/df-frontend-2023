@@ -1,26 +1,26 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import { useContext } from 'react'
-import { useParams, useRouter } from 'next/navigation'
-import { StoreContext, actions } from '../../../store'
-import Layout from '../../../sections/Layout'
-import { Modal } from '../../../components'
-import { Book } from '../../../types/book.type'
+import Link from 'next/link';
+import { useContext } from 'react';
+import { useParams, useRouter } from 'next/navigation';
+import { StoreContext, actions } from '../../../store';
+import Layout from '../../../sections/Layout';
+import { Modal } from '../../../components';
+import { Book } from '../../../types/book.type';
 
 export default function BookDetail() {
-  const Router = useRouter()
-  const { state, dispatch } = useContext(StoreContext)
-  const params = useParams()
+  const Router = useRouter();
+  const { state, dispatch } = useContext(StoreContext);
+  const params = useParams();
   const book: Book | undefined = state.bookList.find(
     (book) => book.id === parseInt(params['bookid'] as string, 10),
-  )
+  );
   const deleteBook = () => {
-    dispatch(actions.selectedBook({ id: -1, name: '', author: '', topic: '' }))
-    dispatch(actions.changeDeleteModalStatus('none'))
-    dispatch(actions.deleteBook(state.selectedBook.id))
-    Router.push('/books')
-  }
+    dispatch(actions.selectedBook({ id: -1, name: '', author: '', topic: '' }));
+    dispatch(actions.changeDeleteModalStatus('none'));
+    dispatch(actions.deleteBook(state.selectedBook.id));
+    Router.push('/books');
+  };
   return (
     <Layout>
       <div className="m-4 dark:text-white">
@@ -37,18 +37,14 @@ export default function BookDetail() {
         <button
           className="my-4 underline underline-offset-2 text-red-700"
           onClick={() => {
-            dispatch(actions.changeDeleteModalStatus('block'))
-            dispatch(actions.selectedBook(book as Book))
+            dispatch(actions.changeDeleteModalStatus('block'));
+            dispatch(actions.selectedBook(book as Book));
           }}
         >
           Delete
         </button>
       </div>
-      <Modal
-        id="modal-delete"
-        titleModal="Delete Book"
-        displayStatus={state.deleteModalStatus}
-      >
+      <Modal id="modal-delete" titleModal="Delete Book" displayStatus={state.deleteModalStatus}>
         <div className=" py-[6px] px-[55px] text-center modal-delete__content">
           <p>
             Do you want to delete
@@ -68,5 +64,5 @@ export default function BookDetail() {
         </div>
       </Modal>
     </Layout>
-  )
+  );
 }

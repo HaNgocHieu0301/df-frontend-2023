@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
-import { ChangeThemeToggle } from '../components'
+import Image from 'next/image';
+import { ChangeThemeToggle } from '../components';
 
 const Header = () => {
   return (
@@ -16,10 +16,7 @@ const Header = () => {
         </h1>
         <div className="flex flex-row gap-4 items-center">
           <ChangeThemeToggle />
-          <a
-            className="flex items-center decoration-none"
-            href="https://github.com/HaNgocHieu0301"
-          >
+          <a className="flex items-center decoration-none" href="https://github.com/HaNgocHieu0301">
             <Image
               className="px-3 w-4 h-4"
               src="https://avatars.githubusercontent.com/u/55908408?v=4"
@@ -33,7 +30,7 @@ const Header = () => {
       </nav>
       <hr />
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

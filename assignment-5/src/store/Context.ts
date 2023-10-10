@@ -1,14 +1,14 @@
-'use client'
+'use client';
 
-import { createContext, Dispatch } from 'react'
-import { State, Action, initState } from './reducer'
+import { createContext, Dispatch } from 'react';
+import { State, Action, initState } from './reducer';
 
 type DataContextValue = {
-  state: State
-  dispatch: Dispatch<Action>
-}
+  state: State;
+  dispatch: Dispatch<Action>;
+};
 const Context = createContext<DataContextValue>({
   state: initState,
   dispatch: () => ({}),
-})
-export default Context
+});
+export default Context;

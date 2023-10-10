@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 const Footer = () => {
   return (
@@ -10,7 +10,7 @@ const Footer = () => {
         </a>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
